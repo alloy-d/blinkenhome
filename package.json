@@ -1,0 +1,22 @@
+{
+  "name": "blinkenhome",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Lloyd <adam@alloy-d.net>",
+  "license": "BSD3",
+  "dependencies": {
+    "bluebird": "^3.3.1",
+    "keypress": "^0.2.1",
+    "moment": "^2.11.2",
+    "openzwave-shared": "^1.1.7",
+    "suncalc": "^1.7.0",
+    "wifi-triangulate": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1"
+  }
+}
