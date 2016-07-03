@@ -9,6 +9,7 @@
   "author": "Adam Lloyd <adam@alloy-d.net>",
   "license": "BSD3",
   "dependencies": {
+    "baconjs": "^0.7.84",
     "bluebird": "^3.3.1",
     "keypress": "^0.2.1",
     "moment": "^2.11.2",
