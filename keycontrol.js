@@ -1,6 +1,8 @@
 require('keypress')(process.stdin);
 const Bacon = require('baconjs');
 
+const ZWave = require('./zwave-init')();
+
 function logKeypress(args) {
   console.log('ch: ', args.ch, '; key: ', args.key);
 }
@@ -29,5 +31,11 @@ const lightLevel = keystream
   .map(function (num) { return num * 11; });
 
 lightLevel.log();
+
+ZWave.then(function (zwave) {
+  lightLevel.onValue(function (value) {
+    zwave.setValue(5, 38, 1, 0, value);
+  });
+});
 
 process.stdin.setRawMode(true);
