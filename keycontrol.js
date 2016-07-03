@@ -1,8 +1,13 @@
 require('keypress')(process.stdin);
 const Bacon = require('baconjs');
 
-function handleKeypress(args) {
+function logKeypress(args) {
   console.log('ch: ', args.ch, '; key: ', args.key);
+}
+
+function parseValue(str) {
+  var int = parseInt(str);
+  return !Number.isNaN(int) ? int : null;
 }
 
 const keystream = Bacon.fromBinder(function (sink) {
@@ -17,7 +22,12 @@ const keystream = Bacon.fromBinder(function (sink) {
   return function unsubscribe() {};
 });
 
-keystream.onValue(handleKeypress);
-keystream.log();
+const lightLevel = keystream
+  .map('.ch')
+  .map(parseValue)
+  .filter(function (val) { return val !== null; })
+  .map(function (num) { return num * 11; });
+
+lightLevel.log();
 
 process.stdin.setRawMode(true);
